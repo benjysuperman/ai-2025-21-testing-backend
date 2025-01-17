@@ -79,10 +79,15 @@ def delete_todos(lang: str, todo_id: int):
     return jsonify({"todo": Todo.delete(todo_id, user.id)})
 
 @app.route("/<lang>/api/contact", methods=["POST"])
+@jwt_required()
 def submit_contact_form(lang: str):
     print(request.get_json())
     return jsonify({"msg": get_i18n(lang, "EMAIL_SENT")}), 200
 
+
+@app.route("/api/index", methods=["GET"])
+def index():
+    return "<h1>Hello from backend</h1>"
 
 if __name__ == '__main__':
     with app.app_context():

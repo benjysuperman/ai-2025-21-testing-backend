@@ -53,7 +53,7 @@ def get_todos(lang: str):
         return jsonify({"todos": []})
     todos = []
     for todo in res:
-        todo_obj = Todo(todo[0], todo[1], todo[2] == '1', int(todo[3]))
+        todo_obj = Todo(todo[0], todo[1], todo[2] == 1, int(todo[3]))
         todos.append(todo_obj.to_dict())
     return jsonify({"todos": todos})
 

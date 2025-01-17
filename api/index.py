@@ -32,7 +32,7 @@ def token_required(f):
         return f(*args, **kwargs)
     return decorated
 
-@app.route("/<lang>/api/login", methods=["POST"])
+@app.route("/api/<lang>/login", methods=["POST"])
 def login(lang: str):
     datas = request.get_json()
     if not datas.get('username') or not datas.get("password"):

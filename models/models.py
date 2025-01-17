@@ -17,7 +17,7 @@ class User:
 
     @staticmethod
     def get_users():
-        with open("/datas/users.txt", "r") as f:
+        with open("datas/users.txt", "r") as f:
             content = f.read()
             users = content.strip().split("\n")
             for i in range(0,len(users)):
@@ -56,7 +56,7 @@ class Todo:
     @staticmethod
     def find_all_by_user_id(user_id: int):
         try:
-            with open(f"/datas/todos-{user_id}.txt", "r") as f:
+            with open(f"datas/todos-{user_id}.txt", "r") as f:
                 content = f.read().strip()
                 if content != '':
                     todos = content.strip().split("\n")

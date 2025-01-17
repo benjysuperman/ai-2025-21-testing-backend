@@ -32,10 +32,6 @@ def token_required(f):
         return f(*args, **kwargs)
     return decorated
 
-@app.route("/api/<lang>/login", methods=["OPTIONS","GET"])
-def get_login(lang: str):
-    return jsonify({
-        "endpoint": "login"}), 200
 
 @app.route("/api/<lang>/login", methods=["POST"])
 def login(lang: str):
@@ -89,10 +85,6 @@ def submit_contact_form(lang: str):
     print(request.get_json())
     return jsonify({"msg": get_i18n(lang, "EMAIL_SENT")}), 200
 
-
-@app.route("/api/index", methods=["GET"])
-def index():
-    return "<h1>Hello from backend</h1>"
 
 if __name__ == '__main__':
     with app.app_context():

@@ -6,7 +6,7 @@ USERS = {
     "1": ['1',"admin","1234","admin"],
     "2": ['2',"writer","1234","writer"],
     "3": ['3',"reader","1234","reader"],
-    "4": ['4',"natatlia","1234","admin"],
+    "4": ['4',"natalia","1234","admin"],
 }
 
 TODOS = {

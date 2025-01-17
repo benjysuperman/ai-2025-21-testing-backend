@@ -27,8 +27,8 @@ class User:
         users = User.get_users()
         user = None
         for u in users:
-            if u[1] == username and u[2] == password:
-                user = u
+            if users[u][1] == username and users[u][2] == password:
+                user = users[u]
                 break
         return user
 

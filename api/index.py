@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, decode_token
 
 from database import jwt
-from datas.i18n import get_i18n
+from api.datas.i18n import get_i18n
 from models.models import User, Todo
 
 app = Flask(__name__)

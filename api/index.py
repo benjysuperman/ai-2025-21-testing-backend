@@ -32,6 +32,11 @@ def token_required(f):
         return f(*args, **kwargs)
     return decorated
 
+@app.route("/api/<lang>/login", methods=["OPTIONS","GET"])
+def get_login(lang: str):
+    return jsonify({
+        "endpoint": "login"}), 200
+
 @app.route("/api/<lang>/login", methods=["POST"])
 def login(lang: str):
     datas = request.get_json()

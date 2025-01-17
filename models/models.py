@@ -87,7 +87,7 @@ class Todo:
             todos = Todo.find_all_by_user_id(user_id)
             todo_to_save.title = datas["title"]
             todo_to_save.done = (0,1)[datas["done"]]
-            with open(f"/api/datas/todos-{user_id}.txt", "w") as f:
+            with open(f"api/datas/todos-{user_id}.txt", "w") as f:
                 content = ""
                 for todo in todos:
                     if todo[0] == todo_to_save.id:
@@ -104,7 +104,7 @@ class Todo:
         todos = Todo.find_all_by_user_id(datas['user_id'])
         if todos is None:
             todos = []
-        with open(f"/api/datas/todos-{datas['user_id']}.txt", "w") as f:
+        with open(f"api/datas/todos-{datas['user_id']}.txt", "w") as f:
             new_todo = [str(uuid.uuid4()), datas['title'], ('0', '1')[datas['done']], str(datas['user_id'])]
             todo_obj = Todo(new_todo[0], new_todo[1], new_todo[2] == '1', int(new_todo[3]))
             todos.append(new_todo)
@@ -117,7 +117,7 @@ class Todo:
     @staticmethod
     def delete(t_id, user_id):
         todos = Todo.find_all_by_user_id(user_id)
-        with open(f"/api/datas/todos-{user_id}.txt", "w") as f:
+        with open(f"api/datas/todos-{user_id}.txt", "w") as f:
             content = ""
             for t in todos:
                 if t[0] != t_id:

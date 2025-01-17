@@ -46,7 +46,7 @@ def login(lang: str):
             "access_token": create_access_token(identity={'username': user.username, 'role': user.role})}), 200
 
 
-@app.route("/<lang>/api/todos", methods=["GET"])
+@app.route("/api/<lang>/todos", methods=["GET"])
 @jwt_required()
 def get_todos(lang: str):
     token = request.headers["Authorization"].replace("Bearer ", "")
@@ -57,7 +57,7 @@ def get_todos(lang: str):
         todos.append(todo.to_dict())
     return jsonify({"todos": todos})
 
-@app.route("/<lang>/api/todos", methods=["POST"])
+@app.route("/api/<lang>/todos", methods=["POST"])
 @jwt_required()
 def post_todos(lang: str):
     user = User.find_by_username(get_jwt_identity()["username"]).first()
@@ -66,19 +66,19 @@ def post_todos(lang: str):
     todo = Todo.add(json)
     return jsonify({"todo": todo})
 
-@app.route("/<lang>/api/todos/<int:todo_id>", methods=["PUT"])
+@app.route("/api/<lang>/todos/<int:todo_id>", methods=["PUT"])
 @jwt_required()
 def put_todos(lang: str, todo_id: int):
 
     return jsonify({"todo": Todo.update(todo_id, request.get_json())})
 
-@app.route("/<lang>/api/todos/<int:todo_id>", methods=["DELETE"])
+@app.route("/api/<lang>/todos/<int:todo_id>", methods=["DELETE"])
 @jwt_required()
 def delete_todos(lang: str, todo_id: int):
     user = User.find_by_username(get_jwt_identity()["username"]).first()
     return jsonify({"todo": Todo.delete(todo_id, user.id)})
 
-@app.route("/<lang>/api/contact", methods=["POST"])
+@app.route("/api/<lang>/contact", methods=["POST"])
 @jwt_required()
 def submit_contact_form(lang: str):
     print(request.get_json())
